@@ -30,10 +30,20 @@ module Rubocop
           REXML::Element.new('error', parent).tap do |e|
             e.attributes['line'] = offence.line
             e.attributes['column'] = offence.column
-            e.attributes['severity'] = offence.severity
+            e.attributes['severity'] = to_checkstyle_severity(offence.severity)
             e.attributes['message'] = offence.message
             e.attributes['source'] = offence.cop_name
           end
+        end
+      end
+
+      # TODO be able to configure severity mapping
+      def to_checkstyle_severity(rubocop_severity)
+        case rubocop_serverity
+        when :fatal, :error; 'high'
+        when :warning; 'medium'
+        when :convention, :refactor; 'low'
+        else; 'medium'
         end
       end
     end
