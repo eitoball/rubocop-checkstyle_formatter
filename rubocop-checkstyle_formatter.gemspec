@@ -9,7 +9,8 @@ Gem::Specification.new do |gem|
   gem.email         = ['eitoball@gmail.com']
   gem.description   = %q{A formatter for rubocop that outputs in checkstyle format}
   gem.summary       = %q{A formatter for rubocop that outputs in checkstyle format}
-  gem.homepage      = ""
+  gem.homepage      = 'https://github.com/eitoball/rubocop-checkstyle_formatter'
+  gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
