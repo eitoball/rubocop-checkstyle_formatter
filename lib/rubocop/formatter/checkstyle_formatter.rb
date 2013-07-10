@@ -40,10 +40,10 @@ module Rubocop
       # TODO be able to configure severity mapping
       def to_checkstyle_severity(rubocop_severity)
         case rubocop_severity
-        when :fatal, :error; 'high'
-        when :warning; 'medium'
-        when :convention, :refactor; 'low'
-        else; 'medium'
+        when :fatal, :error; 'error'
+        when :warning; 'warning'
+        when :convention, :refactor; 'info'
+        else; 'warning'
         end
       end
     end
