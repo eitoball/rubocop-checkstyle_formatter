@@ -3,6 +3,8 @@
 A formatter for rubocop that outputs in checkstyle format.
 It requires rubocop version 0.9.0 or above.
 
+[![Build Status](https://travis-ci.org/eitoball/rubocop-checkstyle_formatter.svg?branch=master)](https://travis-ci.org/eitoball/rubocop-checkstyle_formatter)
+
 ## Installation
 
 Add this line to your application's Gemfile:
