@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'rexml/document'
 
-module Rubocop
+module RuboCop
   module Formatter
     # = This formatter reports in Checkstyle format.
     class CheckstyleFormatter < BaseFormatter

@@ -3,7 +3,7 @@ require 'spec_helper'
 require 'stringio'
 require 'rexml/document'
 
-module Rubocop
+module RuboCop
   module Formatter
     describe CheckstyleFormatter do
       let(:severities) { [:refactor, :convention, :warning, :error, :fatal] }
