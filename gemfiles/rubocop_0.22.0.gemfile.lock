@@ -1,7 +1,7 @@
 PATH
   remote: ../
   specs:
-    rubocop-checkstyle_formatter (0.0.6)
+    rubocop-checkstyle_formatter (0.1.0)
       rubocop (>= 0.14.0)
 
 GEM
