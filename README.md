@@ -1,7 +1,7 @@
 # RuboCop Checkstyle Formatter
 
-A formatter for rubocop that outputs in checkstyle format.
-It requires rubocop version 0.9.0 or above.
+A formatter for [RuboCop](https://github.com/bbatsov/rubocop) that outputs in checkstyle format.
+It requires RuboCop version 0.14.0 or above.
 
 [![Build Status](https://travis-ci.org/eitoball/rubocop-checkstyle_formatter.svg?branch=master)](https://travis-ci.org/eitoball/rubocop-checkstyle_formatter)
 
