@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 require 'rexml/document'
 
+# XXX: Renamed to RuboCop since 0.23.0
+RuboCop = Rubocop if defined?(Rubocop)
+
 module RuboCop
   module Formatter
     # = This formatter reports in Checkstyle format.

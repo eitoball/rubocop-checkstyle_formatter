@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency 'rubocop', '>= 0.23.0'
+  gem.add_dependency 'rubocop', '>= 0.14.0'
   gem.add_development_dependency 'appraisal', '~> 1.0.0'
   gem.add_development_dependency 'bundler', '~> 1.3'
   gem.add_development_dependency 'rake', '~> 10.1'
