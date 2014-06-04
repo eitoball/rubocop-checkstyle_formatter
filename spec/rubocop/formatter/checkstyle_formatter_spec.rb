@@ -11,7 +11,15 @@ module Rubocop
         Cop::Cop.new.tap do |c|
           source_buffer = Parser::Source::Buffer.new('sample.rb', 1).tap { |b| b.source = '' }
           severities.each_with_index do |severity, index|
-            c.add_offense(severity, Parser::Source::Range.new(source_buffer, 0, index), severity.to_s, severity.to_s)
+            if c.respond_to?(:add_offense)
+              c.add_offense(nil, Parser::Source::Range.new(source_buffer, 0, index), severity.to_s, severity)
+            else
+              begin
+                c.add_offence(severity, nil, Parser::Source::Range.new(source_buffer, 0, index), severity.to_s)
+              rescue
+                c.add_offence(nil, Parser::Source::Range.new(source_buffer, 0, index), severity.to_s, severity)
+              end
+            end
           end
         end
       end
@@ -21,7 +29,7 @@ module Rubocop
       before do
         formatter = described_class.new(output)
         formatter.started(file)
-        formatter.file_finished(file, cop.offenses)
+        formatter.file_finished(file, cop.respond_to?(:offenses) ? cop.offenses : cop.offences)
         formatter.finished([file])
       end
 

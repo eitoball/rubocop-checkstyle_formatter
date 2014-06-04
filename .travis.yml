@@ -1,6 +1,5 @@
 language: ruby
 rvm:
-  - 1.9.2
   - 1.9.3
   - 2.0.0
   - 2.1.0
@@ -8,10 +7,6 @@ rvm:
   - jruby-19mode
   - rbx-2
 gemfile:
-  - gemfiles/rubocop_0.9.1.gemfile
-  - gemfiles/rubocop_0.11.1.gemfile
-  - gemfiles/rubocop_0.12.0.gemfile
-  - gemfiles/rubocop_0.13.1.gemfile
   - gemfiles/rubocop_0.14.1.gemfile
   - gemfiles/rubocop_0.15.0.gemfile
   - gemfiles/rubocop_0.16.0.gemfile
@@ -24,14 +19,6 @@ gemfile:
   - gemfiles/rubocop_0.23.0.gemfile
 matrix:
   exclude:
-    - rvm: 2.1.0
-      gemfile: gemfiles/rubocop_0.9.1.gemfile
-    - rvm: 2.1.0
-      gemfile: gemfiles/rubocop_0.11.1.gemfile
-    - rvm: 2.1.0
-      gemfile: gemfiles/rubocop_0.12.0.gemfile
-    - rvm: 2.1.0
-      gemfile: gemfiles/rubocop_0.13.1.gemfile
     - rvm: 2.1.0
       gemfile: gemfiles/rubocop_0.14.1.gemfile
     - rvm: 2.1.0
