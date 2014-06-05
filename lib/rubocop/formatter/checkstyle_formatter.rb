@@ -2,7 +2,7 @@
 require 'rexml/document'
 
 # XXX: Renamed to RuboCop since 0.23.0
-RuboCop = Rubocop if defined?(Rubocop)
+RuboCop = Rubocop if defined?(Rubocop) && ! defined?(RuboCop)
 
 module RuboCop
   module Formatter
