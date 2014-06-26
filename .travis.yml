@@ -17,6 +17,7 @@ gemfile:
   - gemfiles/rubocop_0.21.0.gemfile
   - gemfiles/rubocop_0.22.0.gemfile
   - gemfiles/rubocop_0.23.0.gemfile
+  - gemfiles/rubocop_0.24.0.gemfile
 matrix:
   exclude:
     - rvm: 2.1.0
