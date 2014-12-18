@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 require 'rexml/document'
 
-module Rubocop
+# XXX: Renamed to RuboCop since 0.23.0
+RuboCop = Rubocop if defined?(Rubocop) && ! defined?(RuboCop)
+
+module RuboCop
   module Formatter
     # = This formatter reports in Checkstyle format.
     class CheckstyleFormatter < BaseFormatter
@@ -30,20 +33,20 @@ module Rubocop
           REXML::Element.new('error', parent).tap do |e|
             e.attributes['line'] = offence.line
             e.attributes['column'] = offence.column
-            e.attributes['severity'] = to_checkstyle_severity(offence.severity)
+            e.attributes['severity'] = to_checkstyle_severity(offence.severity.to_s)
             e.attributes['message'] = offence.message
-            e.attributes['source'] = "rubocop.#{offence.cop_name}"
+            e.attributes['source'] = 'com.puppycrawl.tools.checkstyle.' + "rubocop.#{offence.cop_name}"
           end
         end
       end
 
       # TODO be able to configure severity mapping
       def to_checkstyle_severity(rubocop_severity)
-        case rubocop_severity
-        when :fatal, :error; 'error'
-        when :warning; 'warning'
-        when :convention, :refactor; 'info'
-        else; 'warning'
+        case rubocop_severity.to_s
+        when 'fatal', 'error' then 'error'
+        when 'warning' then 'warning'
+        when 'convention', 'refactor' then 'info'
+        else 'warning'
         end
       end
     end
