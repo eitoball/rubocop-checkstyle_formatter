@@ -2,7 +2,8 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0.0
-  - 2.1.0
+  - 2.1
+  - 2.2
   - ruby-head
   - jruby-19mode
   - rbx-2
@@ -20,6 +21,8 @@ gemfile:
   - gemfiles/rubocop_0.24.0.gemfile
   - gemfiles/rubocop_0.25.0.gemfile
   - gemfiles/rubocop_0.26.1.gemfile
+  - gemfiles/rubocop_0.27.1.gemfile
+  - gemfiles/rubocop_0.28.0.gemfile
 matrix:
   exclude:
     - rvm: 2.1.0
