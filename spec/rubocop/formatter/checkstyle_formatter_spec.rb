@@ -24,7 +24,7 @@ module RuboCop
         end
       end
       let(:output) { StringIO.new }
-      let(:file) { 'sample.rb' }
+      let(:file) { File.join(Dir.pwd, 'sample.rb') }
 
       before do
         formatter = described_class.new(output)
@@ -35,13 +35,18 @@ module RuboCop
 
       it 'should convert rubocop severity to checkstyle severity' do
         doc = REXML::Document.new(output.string)
-        REXML::XPath.match(doc, '/checkstyle/file/error').each do |error|
-          message = error.attribute('message').value
-          severity = error.attribute('severity').value
-          case message
-          when 'refactor', 'convention'; expect(severity).to eq('info')
-          when 'warning'; expect(severity).to eq('warning')
-          when 'error', 'fatal'; expect(severity).to eq('error')
+        REXML::XPath.match(doc, '/checkstyle/file').each do |file|
+          if defined?(PathUtil)
+            expect(file.attribute('name').value).to eq('sample.rb')
+          end
+          REXML::XPath.match(file, '/error').each do |error|
+            message = error.attribute('message').value
+            severity = error.attribute('severity').value
+            case message
+            when 'refactor', 'convention'; expect(severity).to eq('info')
+            when 'warning'; expect(severity).to eq('warning')
+            when 'error', 'fatal'; expect(severity).to eq('error')
+            end
           end
         end
       end

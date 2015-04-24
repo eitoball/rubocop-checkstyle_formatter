@@ -8,6 +8,7 @@ module RuboCop
   module Formatter
     # = This formatter reports in Checkstyle format.
     class CheckstyleFormatter < BaseFormatter
+      include PathUtil if defined?(PathUtil)
       def started(target_file)
         @document = REXML::Document.new.tap do |d|
           d << REXML::XMLDecl.new
@@ -17,7 +18,11 @@ module RuboCop
 
       def file_finished(file, offences)
         REXML::Element.new('file', @checkstyle).tap do |f|
-          f.attributes['name'] = file
+          path_name = file
+          path_name = relative_path(file) if defined?(relative_path)
+          f.attributes['name'] = path_name
+          # f.attributes['name'] =
+            # defined?(PathUtil) ? PathUtil.relative_path(file) : file
           add_offences(f, offences)
         end
       end
