@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = 'rubocop-checkstyle_formatter'
-  gem.version       = '0.1.1'
+  gem.version       = '0.2.0'
   gem.authors       = ['Eito Katagiri']
   gem.email         = ['eitoball@gmail.com']
   gem.description   = %q{A formatter for rubocop that outputs in checkstyle format}
@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency 'rubocop', '>= 0.14.0'
+  gem.add_dependency 'rubocop', '>= 0.20.1'
   gem.add_development_dependency 'appraisal', '~> 1.0.0'
   gem.add_development_dependency 'bundler', '~> 1.3'
   gem.add_development_dependency 'rake', '~> 10.1'

@@ -1,7 +1,7 @@
 # RuboCop Checkstyle Formatter
 
 A formatter for [RuboCop](https://github.com/bbatsov/rubocop) that outputs in checkstyle format.
-It requires RuboCop version 0.14.0 or above.
+It requires RuboCop version 0.20.1 or above.
 
 [![Build Status](https://travis-ci.org/eitoball/rubocop-checkstyle_formatter.svg?branch=master)](https://travis-ci.org/eitoball/rubocop-checkstyle_formatter)
 
@@ -22,7 +22,7 @@ Or install it yourself as:
 ## Usage
 
     $ rubocop --require rubocop/formatter/checkstyle_formatter --format RuboCop::Formatter::CheckstyleFormatter
-    
+
 I use this formatter in Jenkins with [Violations plugin](https://wiki.jenkins-ci.org/display/JENKINS/Violations).
 As a part of build, I execute rubocop as shell script like:
 

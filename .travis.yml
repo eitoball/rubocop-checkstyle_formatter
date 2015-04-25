@@ -8,12 +8,6 @@ rvm:
   - jruby-19mode
   - rbx-2
 gemfile:
-  - gemfiles/rubocop_0.14.1.gemfile
-  - gemfiles/rubocop_0.15.0.gemfile
-  - gemfiles/rubocop_0.16.0.gemfile
-  - gemfiles/rubocop_0.17.0.gemfile
-  - gemfiles/rubocop_0.18.1.gemfile
-  - gemfiles/rubocop_0.19.1.gemfile
   - gemfiles/rubocop_0.20.1.gemfile
   - gemfiles/rubocop_0.21.0.gemfile
   - gemfiles/rubocop_0.22.0.gemfile
@@ -27,34 +21,6 @@ gemfile:
   - gemfiles/rubocop_0.30.1.gemfile
 matrix:
   exclude:
-    - rvm: 2.1.6
-      gemfile: gemfiles/rubocop_0.14.1.gemfile
-    - rvm: 2.1.6
-      gemfile: gemfiles/rubocop_0.15.0.gemfile
-    - rvm: 2.1.6
-      gemfile: gemfiles/rubocop_0.15.0.gemfile
-    - rvm: 2.1.6
-      gemfile: gemfiles/rubocop_0.16.0.gemfile
-    - rvm: 2.1.6
-      gemfile: gemfiles/rubocop_0.17.0.gemfile
-    - rvm: 2.1.6
-      gemfile: gemfiles/rubocop_0.18.1.gemfile
-    - rvm: 2.1.6
-      gemfile: gemfiles/rubocop_0.19.1.gemfile
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.14.1.gemfile
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.15.0.gemfile
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.15.0.gemfile
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.16.0.gemfile
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.17.0.gemfile
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.18.1.gemfile
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.19.1.gemfile
     - rvm: 2.2.2
       gemfile: gemfiles/rubocop_0.20.1.gemfile
     - rvm: 2.2.2
