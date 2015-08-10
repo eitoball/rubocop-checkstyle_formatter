@@ -23,12 +23,12 @@ Or install it yourself as:
 
     $ rubocop --require rubocop/formatter/checkstyle_formatter --format RuboCop::Formatter::CheckstyleFormatter
 
-I use this formatter in Jenkins with [Violations plugin](https://wiki.jenkins-ci.org/display/JENKINS/Violations).
+I use this formatter in Jenkins with [Checkstyle plugin](https://wiki.jenkins-ci.org/display/JENKINS/Checkstyle+Plugin).
 As a part of build, I execute rubocop as shell script like:
 
     bundle exec rubocop --require rubocop/formatter/checkstyle_formatter --format RuboCop::Formatter::CheckstyleFormatter --no-color --rails --out tmp/checkstyle.xml
 
-Then, after build, I add 'Report Violations' and configure xml filename pattern of checkstyle to "tmp/checkstyle.xml".
+Then, after build, I add post-build action 'Publish Checkstyle analysis results' and configure Checkstyle results to "tmp/checkstyle.xml".
 
 ## Contributing
 
