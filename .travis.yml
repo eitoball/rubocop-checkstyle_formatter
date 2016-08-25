@@ -1,36 +1,35 @@
+sudo: false
+cache: bundler
 language: ruby
 rvm:
-  - 1.9.3
   - 2.0.0
-  - 2.1.6
-  - 2.2.2
+  - 2.1
+  - 2.2
+  - 2.3.0
   - ruby-head
-  - jruby-19mode
-  - rbx-2
+  - jruby-9.0.1.0
+  - rbx-3
 gemfile:
-  - gemfiles/rubocop_0.20.1.gemfile
-  - gemfiles/rubocop_0.21.0.gemfile
-  - gemfiles/rubocop_0.22.0.gemfile
-  - gemfiles/rubocop_0.23.0.gemfile
-  - gemfiles/rubocop_0.24.0.gemfile
-  - gemfiles/rubocop_0.25.0.gemfile
-  - gemfiles/rubocop_0.26.1.gemfile
-  - gemfiles/rubocop_0.27.1.gemfile
-  - gemfiles/rubocop_0.28.0.gemfile
-  - gemfiles/rubocop_0.29.1.gemfile
   - gemfiles/rubocop_0.30.1.gemfile
+  - gemfiles/rubocop_0.31.0.gemfile
+  - gemfiles/rubocop_0.32.1.gemfile
+  - gemfiles/rubocop_0.33.0.gemfile
+  - gemfiles/rubocop_0.34.2.gemfile
+  - gemfiles/rubocop_0.35.1.gemfile
+  - gemfiles/rubocop_0.36.0.gemfile
+  - gemfiles/rubocop_0.37.2.gemfile
+  - gemfiles/rubocop_0.38.0.gemfile
+  - gemfiles/rubocop_0.39.0.gemfile
+  - gemfiles/rubocop_0.40.0.gemfile
+  - gemfiles/rubocop_0.41.2.gemfile
+  - gemfiles/rubocop_0.42.0.gemfile
 matrix:
-  exclude:
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.20.1.gemfile
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.21.0.gemfile
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.22.0.gemfile
-    - rvm: 2.2.2
-      gemfile: gemfiles/rubocop_0.23.0.gemfile
   allow_failures:
     - rvm: ruby-head
+    - rvm: rbx-3
+  fast_finish: true
 before_install: gem update --remote bundler
+install:
+  - bundle install --retry=3
 script:
   - bundle exec rake spec
