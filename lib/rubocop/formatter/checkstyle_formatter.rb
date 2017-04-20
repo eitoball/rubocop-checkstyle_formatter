@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'rexml/document'
 require 'rubocop/formatter/base_formatter'
-require 'pry'
 
 # XXX: Renamed to RuboCop since 0.23.0
 RuboCop = Rubocop if defined?(Rubocop) && ! defined?(RuboCop)
