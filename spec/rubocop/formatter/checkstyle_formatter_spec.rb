@@ -37,7 +37,7 @@ module RuboCop
         doc = REXML::Document.new(output.string)
         REXML::XPath.match(doc, '/checkstyle/file').each do |file|
           if defined?(PathUtil)
-            expect(file.attribute('name').value).to eq('sample.rb')
+            expect(file.attribute('name').value).to eq( File.join(Dir.pwd, 'sample.rb') )
           end
           REXML::XPath.match(file, '/error').each do |error|
             message = error.attribute('message').value
