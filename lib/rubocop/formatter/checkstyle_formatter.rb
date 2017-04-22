@@ -10,7 +10,7 @@ module RuboCop
     # = This formatter reports in Checkstyle format.
     class CheckstyleFormatter < BaseFormatter
       include PathUtil if defined?(PathUtil)
-      def started(target_file)
+      def started(_target_file)
         @document = REXML::Document.new.tap do |d|
           d << REXML::XMLDecl.new
         end
@@ -28,7 +28,7 @@ module RuboCop
         end
       end
 
-      def finished(inspected_files)
+      def finished(_inspected_files)
         @document.write(output, 2)
       end
 
