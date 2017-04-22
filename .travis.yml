@@ -33,4 +33,5 @@ before_install: gem update --remote bundler
 install:
   - bundle install --retry=3
 script:
+  - bundle exec rubocop
   - bundle exec rake spec

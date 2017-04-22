@@ -1,0 +1,117 @@
+# Offense count: 1
+# Cop supports --auto-correct.
+Lint/UnneededSplatExpansion:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+# Offense count: 2
+# Cop supports --auto-correct.
+# Configuration parameters: AllowUnusedKeywordArguments, IgnoreEmptyMethods.
+Lint/UnusedMethodArgument:
+  Exclude:
+    - 'lib/rubocop/formatter/checkstyle_formatter.rb'
+
+# Offense count: 1
+Metrics/AbcSize:
+  Max: 17
+
+# Offense count: 1
+# Configuration parameters: CountComments, ExcludedMethods.
+Metrics/BlockLength:
+  Max: 42
+
+# Offense count: 9
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Metrics/LineLength:
+  Max: 111
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: Keywords.
+# Keywords: TODO, FIXME, OPTIMIZE, HACK, REVIEW
+Style/CommentAnnotation:
+  Exclude:
+    - 'lib/rubocop/formatter/checkstyle_formatter.rb'
+
+# Offense count: 2
+# Cop supports --auto-correct.
+Style/CommentIndentation:
+  Exclude:
+    - 'lib/rubocop/formatter/checkstyle_formatter.rb'
+
+# Offense count: 2
+# Cop supports --auto-correct.
+Style/EmptyLineAfterMagicComment:
+  Exclude:
+    - 'rubocop-checkstyle_formatter.gemspec'
+    - 'spec/rubocop/formatter/checkstyle_formatter_spec.rb'
+
+# Offense count: 7
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+# SupportedStyles: when_needed, always, never
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'Appraisals'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'lib/rubocop/formatter/checkstyle_formatter.rb'
+    - 'rubocop-checkstyle_formatter.gemspec'
+    - 'spec/rubocop/formatter/checkstyle_formatter_spec.rb'
+    - 'spec/spec_helper.rb'
+
+# Offense count: 3
+# Cop supports --auto-correct.
+# Configuration parameters: PreferredDelimiters.
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - 'rubocop-checkstyle_formatter.gemspec'
+    - 'spec/spec_helper.rb'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+Style/SpaceAfterNot:
+  Exclude:
+    - 'lib/rubocop/formatter/checkstyle_formatter.rb'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+# SupportedStyles: space, no_space
+Style/SpaceBeforeBlockBraces:
+  Exclude:
+    - 'rubocop-checkstyle_formatter.gemspec'
+
+# Offense count: 2
+# Cop supports --auto-correct.
+Style/SpaceInsidePercentLiteralDelimiters:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+# SupportedStyles: use_perl_names, use_english_names
+Style/SpecialGlobalVars:
+  Exclude:
+    - 'rubocop-checkstyle_formatter.gemspec'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: SupportedStyles.
+# SupportedStyles: percent, brackets
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+# Offense count: 2
+# Cop supports --auto-correct.
+Style/UnneededPercentQ:
+  Exclude:
+    - 'rubocop-checkstyle_formatter.gemspec'
+
+# Offense count: 3
+# Cop supports --auto-correct.
+Style/WhenThen:
+  Exclude:
+    - 'spec/rubocop/formatter/checkstyle_formatter_spec.rb'
