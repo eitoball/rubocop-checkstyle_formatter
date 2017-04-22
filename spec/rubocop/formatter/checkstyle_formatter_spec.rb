@@ -43,9 +43,9 @@ module RuboCop
             message = error.attribute('message').value
             severity = error.attribute('severity').value
             case message
-            when 'refactor', 'convention'; expect(severity).to eq('info')
-            when 'warning'; expect(severity).to eq('warning')
-            when 'error', 'fatal'; expect(severity).to eq('error')
+            when 'refactor', 'convention' then expect(severity).to eq('info')
+            when 'warning' then expect(severity).to eq('warning')
+            when 'error', 'fatal' then expect(severity).to eq('error')
             end
           end
         end
