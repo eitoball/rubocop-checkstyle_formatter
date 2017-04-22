@@ -6,7 +6,7 @@ require 'rexml/document'
 module RuboCop
   module Formatter
     describe CheckstyleFormatter do
-      let(:severities) { [:refactor, :convention, :warning, :error, :fatal] }
+      let(:severities) { %i[refactor convention warning error fatal] }
       let(:cop) do
         Cop::Cop.new.tap do |c|
           source_buffer = Parser::Source::Buffer.new('sample.rb', 1).tap { |b| b.source = '' }

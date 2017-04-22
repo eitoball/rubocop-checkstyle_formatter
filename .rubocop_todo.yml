@@ -79,10 +79,3 @@ Style/SpaceInsidePercentLiteralDelimiters:
 Style/SpecialGlobalVars:
   Exclude:
     - 'rubocop-checkstyle_formatter.gemspec'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: SupportedStyles.
-# SupportedStyles: percent, brackets
-Style/SymbolArray:
-  EnforcedStyle: brackets
