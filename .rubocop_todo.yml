@@ -57,17 +57,3 @@ Style/PercentLiteralDelimiters:
 Style/SpaceAfterNot:
   Exclude:
     - 'lib/rubocop/formatter/checkstyle_formatter.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: space, no_space
-Style/SpaceBeforeBlockBraces:
-  Exclude:
-    - 'rubocop-checkstyle_formatter.gemspec'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/SpaceInsidePercentLiteralDelimiters:
-  Exclude:
-    - 'spec/spec_helper.rb'
