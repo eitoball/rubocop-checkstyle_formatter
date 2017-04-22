@@ -86,9 +86,3 @@ Style/SpecialGlobalVars:
 # SupportedStyles: percent, brackets
 Style/SymbolArray:
   EnforcedStyle: brackets
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/UnneededPercentQ:
-  Exclude:
-    - 'rubocop-checkstyle_formatter.gemspec'

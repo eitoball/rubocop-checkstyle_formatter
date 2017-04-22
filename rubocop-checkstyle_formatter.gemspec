@@ -7,8 +7,8 @@ Gem::Specification.new do |gem|
   gem.version       = '0.3.0'
   gem.authors       = ['Eito Katagiri']
   gem.email         = ['eitoball@gmail.com']
-  gem.description   = %q{A formatter for rubocop that outputs in checkstyle format}
-  gem.summary       = %q{A formatter for rubocop that outputs in checkstyle format}
+  gem.description   = 'A formatter for rubocop that outputs in checkstyle format'
+  gem.summary       = 'A formatter for rubocop that outputs in checkstyle format'
   gem.homepage      = 'https://github.com/eitoball/rubocop-checkstyle_formatter'
   gem.license       = 'MIT'
 
