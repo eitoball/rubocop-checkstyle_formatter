@@ -22,10 +22,3 @@ Style/CommentAnnotation:
 Style/CommentIndentation:
   Exclude:
     - 'lib/rubocop/formatter/checkstyle_formatter.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/EmptyLineAfterMagicComment:
-  Exclude:
-    - 'rubocop-checkstyle_formatter.gemspec'
-    - 'spec/rubocop/formatter/checkstyle_formatter_spec.rb'
