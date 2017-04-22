@@ -51,9 +51,3 @@ Style/PercentLiteralDelimiters:
   Exclude:
     - 'rubocop-checkstyle_formatter.gemspec'
     - 'spec/spec_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/SpaceAfterNot:
-  Exclude:
-    - 'lib/rubocop/formatter/checkstyle_formatter.rb'

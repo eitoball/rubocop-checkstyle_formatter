@@ -3,7 +3,7 @@ require 'rexml/document'
 require 'rubocop/formatter/base_formatter'
 
 # XXX: Renamed to RuboCop since 0.23.0
-RuboCop = Rubocop if defined?(Rubocop) && ! defined?(RuboCop)
+RuboCop = Rubocop if defined?(Rubocop) && !defined?(RuboCop)
 
 module RuboCop
   module Formatter
