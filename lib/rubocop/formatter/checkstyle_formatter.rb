@@ -41,7 +41,7 @@ module RuboCop
             e.attributes['column'] = offence.column
             e.attributes['severity'] = to_checkstyle_severity(offence.severity.to_s)
             e.attributes['message'] = offence.message
-            e.attributes['source'] = 'com.puppycrawl.tools.checkstyle.' + offence.cop_name
+            e.attributes['source'] = 'com.puppycrawl.tools.checkstyle.' + "rubocop.#{offence.cop_name}"
           end
         end
       end
