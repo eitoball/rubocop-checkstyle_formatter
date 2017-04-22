@@ -37,13 +37,19 @@ module RuboCop
       def add_offences(parent, offences)
         offences.each do |offence|
           REXML::Element.new('error', parent).tap do |e|
-            e.attributes['line'] = offence.line
-            e.attributes['column'] = offence.column
-            e.attributes['severity'] = to_checkstyle_severity(offence.severity.to_s)
-            e.attributes['message'] = offence.message
-            e.attributes['source'] = 'com.puppycrawl.tools.checkstyle.' + offence.cop_name
+            e.add_attributes(offence_attributes(offence))
           end
         end
+      end
+
+      def offence_attributes(offence)
+        {
+          'line' => offence.line,
+          'column' => offence.column,
+          'severity' => to_checkstyle_severity(offence.severity.to_s),
+          'message' => offence.message,
+          'source' => 'com.puppycrawl.tools.checkstyle.' + offence.cop_name
+        }
       end
 
       # TODO be able to configure severity mapping
