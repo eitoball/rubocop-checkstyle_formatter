@@ -67,7 +67,7 @@ module RuboCop
           formatter.finished([file])
           doc = REXML::Document.new(output.string)
           file = REXML::XPath.first(doc, '/checkstyle/file')
-          expect(Pathname.new(file['name'])).to be_absolute
+          expect(Pathname.new(file.attributes['name'])).to be_absolute
         end
       end
     end
