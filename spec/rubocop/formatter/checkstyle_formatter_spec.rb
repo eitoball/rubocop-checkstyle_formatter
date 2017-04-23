@@ -51,6 +51,25 @@ module RuboCop
           end
         end
       end
+
+      context 'RUBOCOP_CHECKSTYLE_FORMATTER_ABSOLUTE_PATH is defined' do
+        around do |example|
+          ENV['RUBOCOP_CHECKSTYLE_FORMATTER_ABSOLUTE_PATH'] = 'true'
+          example.run
+          ENV.delete('RUBOCOP_CHECKSTYLE_FORMATTER_ABSOLUTE_PATH')
+        end
+
+        it 'should use absolute path in name attribute of file tag' do
+          output = StringIO.new
+          formatter = described_class.new(output)
+          formatter.started(file)
+          formatter.file_finished(file, cop.respond_to?(:offenses) ? cop.offenses : cop.offences)
+          formatter.finished([file])
+          doc = REXML::Document.new(output.string)
+          file = REXML::XPath.first(doc, '/checkstyle/file')
+          expect(Pathname.new(file['name'])).to be_absolute
+        end
+      end
     end
   end
 end

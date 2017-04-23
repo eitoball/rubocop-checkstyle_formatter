@@ -20,10 +20,8 @@ module RuboCop
       def file_finished(file, offences)
         REXML::Element.new('file', @checkstyle).tap do |f|
           path_name = file
-          path_name = relative_path(file) if defined?(relative_path)
+          path_name = relative_path(path_name) if !ENV.has_key?('RUBOCOP_CHECKSTYLE_FORMATTER_ABSOLUTE_PATH') && defined?(relative_path)
           f.attributes['name'] = path_name
-          # f.attributes['name'] =
-            # defined?(PathUtil) ? PathUtil.relative_path(file) : file
           add_offences(f, offences)
         end
       end
