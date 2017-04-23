@@ -6,15 +6,8 @@ rvm:
   - 2.3.4
   - 2.4.1
   - ruby-head
-  - jruby-9.0.5.0
   - jruby-9.1.5.0
-  - rbx-3
 gemfile:
-  - gemfiles/rubocop_0.35.1.gemfile
-  - gemfiles/rubocop_0.36.0.gemfile
-  - gemfiles/rubocop_0.37.2.gemfile
-  - gemfiles/rubocop_0.38.0.gemfile
-  - gemfiles/rubocop_0.39.0.gemfile
   - gemfiles/rubocop_0.40.0.gemfile
   - gemfiles/rubocop_0.41.2.gemfile
   - gemfiles/rubocop_0.42.0.gemfile
@@ -27,11 +20,9 @@ gemfile:
 matrix:
   allow_failures:
     - rvm: ruby-head
-    - rvm: rbx-3
   fast_finish: true
 before_install: gem update --remote bundler
 install:
   - bundle install --retry=3
 script:
-  - bundle exec rubocop
   - bundle exec rake spec
