@@ -18,6 +18,12 @@ gemfile:
   - gemfiles/rubocop_0.46.0.gemfile
   - gemfiles/rubocop_0.47.1.gemfile
   - gemfiles/rubocop_0.48.1.gemfile
+  - gemfiles/rubocop_0.49.1.gemfile
+  - gemfiles/rubocop_0.50.0.gemfile
+  - gemfiles/rubocop_0.51.0.gemfile
+  - gemfiles/rubocop_0.52.1.gemfile
+  - gemfiles/rubocop_0.53.0.gemfile
+  - gemfiles/rubocop_0.54.0.gemfile
 matrix:
   allow_failures:
     - rvm: ruby-head
