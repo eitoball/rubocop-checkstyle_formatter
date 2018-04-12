@@ -13,7 +13,12 @@ module RuboCop
           source_buffer = Parser::Source::Buffer.new('sample.rb', 1).tap { |b| b.source = '' }
           severities.each_with_index do |severity, index|
             if c.respond_to?(:add_offense)
-              c.add_offense(nil, Parser::Source::Range.new(source_buffer, 0, index), severity.to_s, severity)
+              type = c.method(:add_offense).parameters.last.first
+              if %i(block key).include?(type)
+                c.add_offense(nil, location: Parser::Source::Range.new(source_buffer, 0, index), message: severity.to_s)
+              else
+                c.add_offense(nil, Parser::Source::Range.new(source_buffer, 0, index), severity.to_s, severity)
+              end
             else
               begin
                 c.add_offence(severity, nil, Parser::Source::Range.new(source_buffer, 0, index), severity.to_s)
