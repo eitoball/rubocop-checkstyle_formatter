@@ -29,6 +29,8 @@ module RuboCop
       end
 
       def file_finished(file, offenses)
+        return if offenses.empty?
+
         file_element = REXML::Element.new('file', @checkstyle)
         file_element.attributes['name'] = file_path(file)
         add_offenses(file_element, offenses)
