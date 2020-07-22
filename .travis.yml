@@ -2,28 +2,35 @@ sudo: false
 cache: bundler
 language: ruby
 rvm:
-  - 2.2.10
-  - 2.3.7
-  - 2.4.4
-  - 2.5.1
+  - 2.4.10
+  - 2.5.8
+  - 2.6.6
+  - 2.7.1
   - ruby-head
-  - jruby-9.1.9.0
+  - jruby-9.1.17.0
+  - jruby-9.2.12.0
 gemfile:
-  - gemfiles/rubocop_0.40.0.gemfile
-  - gemfiles/rubocop_0.41.2.gemfile
-  - gemfiles/rubocop_0.42.0.gemfile
-  - gemfiles/rubocop_0.43.0.gemfile
-  - gemfiles/rubocop_0.44.1.gemfile
-  - gemfiles/rubocop_0.45.0.gemfile
-  - gemfiles/rubocop_0.46.0.gemfile
-  - gemfiles/rubocop_0.47.1.gemfile
-  - gemfiles/rubocop_0.48.1.gemfile
-  - gemfiles/rubocop_0.49.1.gemfile
-  - gemfiles/rubocop_0.50.0.gemfile
-  - gemfiles/rubocop_0.51.0.gemfile
-  - gemfiles/rubocop_0.52.1.gemfile
-  - gemfiles/rubocop_0.53.0.gemfile
-  - gemfiles/rubocop_0.54.0.gemfile
+  - gemfiles/rubocop_0.68.1.gemfile
+  - gemfiles/rubocop_0.69.0.gemfile
+  - gemfiles/rubocop_0.70.0.gemfile
+  - gemfiles/rubocop_0.71.0.gemfile
+  - gemfiles/rubocop_0.72.0.gemfile
+  - gemfiles/rubocop_0.73.0.gemfile
+  - gemfiles/rubocop_0.74.0.gemfile
+  - gemfiles/rubocop_0.75.1.gemfile
+  - gemfiles/rubocop_0.76.0.gemfile
+  - gemfiles/rubocop_0.77.0.gemfile
+  - gemfiles/rubocop_0.78.0.gemfile
+  - gemfiles/rubocop_0.79.0.gemfile
+  - gemfiles/rubocop_0.80.1.gemfile
+  - gemfiles/rubocop_0.81.0.gemfile
+  - gemfiles/rubocop_0.82.0.gemfile
+  - gemfiles/rubocop_0.83.0.gemfile
+  - gemfiles/rubocop_0.84.0.gemfile
+  - gemfiles/rubocop_0.85.0.gemfile
+  - gemfiles/rubocop_0.86.0.gemfile
+  - gemfiles/rubocop_0.87.1.gemfile
+  - gemfiles/rubocop_0.88.0.gemfile
 matrix:
   allow_failures:
     - rvm: ruby-head
