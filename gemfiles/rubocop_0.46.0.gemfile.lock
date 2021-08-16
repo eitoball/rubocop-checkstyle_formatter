@@ -43,6 +43,7 @@ GEM
     unicode-display_width (1.2.1)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
@@ -54,4 +55,4 @@ DEPENDENCIES
   rubocop-checkstyle_formatter!
 
 BUNDLED WITH
-   1.16.1
+   1.17.3
