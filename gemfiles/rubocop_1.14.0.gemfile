@@ -4,4 +4,4 @@ source "https://rubygems.org"
 
 gem "rubocop", "1.14.0"
 
-gemspec :path => "../"
+gemspec path: "../"
