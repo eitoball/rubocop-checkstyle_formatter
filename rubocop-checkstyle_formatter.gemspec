@@ -6,7 +6,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = 'rubocop-checkstyle_formatter'
-  gem.version       = '0.5.0'
+  gem.version       = '0.6.0'
   gem.authors       = ['Eito Katagiri']
   gem.email         = ['eitoball@gmail.com']
   gem.description   = 'A formatter for rubocop that outputs in checkstyle format'
