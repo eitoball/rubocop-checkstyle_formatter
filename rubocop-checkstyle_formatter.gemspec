@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+# frozen_string_literal: true
 
 require 'English'
 lib = File.expand_path('../lib', __FILE__)
@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency 'rubocop', '>= 1.14.0'
+  gem.add_dependency 'rubocop', '>= 1.20.0'
   gem.add_development_dependency 'appraisal', '~> 2.4.1'
   gem.add_development_dependency 'bundler', '>= 2.2.10'
   gem.add_development_dependency 'rake', '>= 12.3.3'

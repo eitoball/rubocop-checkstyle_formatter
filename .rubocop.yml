@@ -2,12 +2,3 @@ inherit_from: .rubocop_todo.yml
 
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: 2.2
-
-Style/FrozenStringLiteralComment:
-  SupportedStyles:
-    - when_needed
-
-Style/FileName:
-  Exclude:
-    - Appraisals
