@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    rubocop-checkstyle_formatter (0.6.0)
+    rubocop-checkstyle_formatter (0.6.1)
       rubocop (>= 1.14.0)
 
 GEM
@@ -50,6 +50,7 @@ GEM
 
 PLATFORMS
   universal-java-11
+  x86_64-darwin-25
   x86_64-linux
 
 DEPENDENCIES
@@ -61,4 +62,4 @@ DEPENDENCIES
   rubocop-checkstyle_formatter!
 
 BUNDLED WITH
-   2.3.22
+   2.5.5
