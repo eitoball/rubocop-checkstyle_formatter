@@ -32,6 +32,8 @@ Then, after build, I add post-build action 'Publish Checkstyle analysis results'
 
 ## Contributing
 
+Repository-specific guidance for GitHub Copilot lives in `.github/copilot-instructions.md`.
+
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
