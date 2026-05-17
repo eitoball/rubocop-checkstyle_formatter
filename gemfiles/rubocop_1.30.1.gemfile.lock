@@ -62,4 +62,4 @@ DEPENDENCIES
   rubocop-checkstyle_formatter!
 
 BUNDLED WITH
-   2.5.5
+   2.3.22
