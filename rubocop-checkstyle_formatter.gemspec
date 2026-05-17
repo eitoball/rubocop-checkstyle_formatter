@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'https://github.com/eitoball/rubocop-checkstyle_formatter'
   gem.license       = 'MIT'
 
-  gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
+  gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR).grep_v(%r{^spec/})
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
