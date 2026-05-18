@@ -18,6 +18,7 @@ module RuboCop
       end
 
       def file_finished(file, offences)
+        return if offences.empty?
         REXML::Element.new('file', @checkstyle).tap do |f|
           path_name = file
           path_name = relative_path(path_name) if !ENV.has_key?('RUBOCOP_CHECKSTYLE_FORMATTER_ABSOLUTE_PATH') && defined?(relative_path)
