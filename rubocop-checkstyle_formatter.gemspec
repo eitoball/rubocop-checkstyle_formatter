@@ -21,7 +21,10 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'rubocop', '>= 1.14.0'
   gem.add_development_dependency 'appraisal', '~> 2.4.1'
+  gem.add_development_dependency 'base64'
   gem.add_development_dependency 'bundler', '>= 2.2.10'
+  gem.add_development_dependency 'ostruct'
+  gem.add_development_dependency 'racc'
   gem.add_development_dependency 'rake', '>= 12.3.3'
   gem.add_development_dependency 'rspec', '~> 3.5.0'
 end
