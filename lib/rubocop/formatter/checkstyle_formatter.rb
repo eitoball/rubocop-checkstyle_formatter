@@ -1,29 +1,37 @@
-# -*- coding: utf-8 -*-
-require 'rexml/document'
-require 'rubocop/formatter/base_formatter'
+# frozen_string_literal: true
 
-# XXX: Renamed to RuboCop since 0.23.0
-RuboCop = Rubocop if defined?(Rubocop) && !defined?(RuboCop)
+require 'rexml/document'
+require 'rubocop/path_util'
+require 'rubocop/formatter/base_formatter'
 
 module RuboCop
   module Formatter
-    # = This formatter reports in Checkstyle format.
+    # Outputs RuboCop offenses in Checkstyle XML format.
     class CheckstyleFormatter < BaseFormatter
-      include PathUtil if defined?(PathUtil)
+      include PathUtil
+
+      CHECKSTYLE_SOURCE_PREFIX = 'com.puppycrawl.tools.checkstyle.'
+
+      SEVERITY_MAPPING = {
+        'fatal' => 'error',
+        'error' => 'error',
+        'warning' => 'warning',
+        'convention' => 'info',
+        'refactor' => 'info'
+      }.freeze
+
+      DEFAULT_CHECKSTYLE_SEVERITY = 'warning'
+
       def started(_target_file)
-        @document = REXML::Document.new.tap do |d|
-          d << REXML::XMLDecl.new
-        end
+        @document = REXML::Document.new
+        @document << REXML::XMLDecl.new
         @checkstyle = REXML::Element.new('checkstyle', @document)
       end
 
-      def file_finished(file, offences)
-        REXML::Element.new('file', @checkstyle).tap do |f|
-          path_name = file
-          path_name = relative_path(path_name) if !ENV.has_key?('RUBOCOP_CHECKSTYLE_FORMATTER_ABSOLUTE_PATH') && defined?(relative_path)
-          f.attributes['name'] = path_name
-          add_offences(f, offences)
-        end
+      def file_finished(file, offenses)
+        file_element = REXML::Element.new('file', @checkstyle)
+        file_element.attributes['name'] = file_path(file)
+        add_offenses(file_element, offenses)
       end
 
       def finished(_inspected_files)
@@ -32,32 +40,35 @@ module RuboCop
 
       private
 
-      def add_offences(parent, offences)
-        offences.each do |offence|
-          REXML::Element.new('error', parent).tap do |e|
-            e.add_attributes(offence_attributes(offence))
-          end
+      def file_path(file)
+        return file if absolute_path?
+
+        relative_path(file)
+      end
+
+      def absolute_path?
+        ENV.key?('RUBOCOP_CHECKSTYLE_FORMATTER_ABSOLUTE_PATH')
+      end
+
+      def add_offenses(parent, offenses)
+        offenses.each do |offense|
+          error = REXML::Element.new('error', parent)
+          error.add_attributes(offense_attributes(offense))
         end
       end
 
-      def offence_attributes(offence)
+      def offense_attributes(offense)
         {
-          'line' => offence.line,
-          'column' => offence.column,
-          'severity' => to_checkstyle_severity(offence.severity.to_s),
-          'message' => offence.message,
-          'source' => 'com.puppycrawl.tools.checkstyle.' + offence.cop_name
+          'line' => offense.line,
+          'column' => offense.column,
+          'severity' => to_checkstyle_severity(offense.severity),
+          'message' => offense.message,
+          'source' => "#{CHECKSTYLE_SOURCE_PREFIX}#{offense.cop_name}"
         }
       end
 
-      # TODO be able to configure severity mapping
       def to_checkstyle_severity(rubocop_severity)
-        case rubocop_severity.to_s
-        when 'fatal', 'error' then 'error'
-        when 'warning' then 'warning'
-        when 'convention', 'refactor' then 'info'
-        else 'warning'
-        end
+        SEVERITY_MAPPING.fetch(rubocop_severity.to_s, DEFAULT_CHECKSTYLE_SEVERITY)
       end
     end
   end
