@@ -12,10 +12,14 @@ GEM
       rake
       thor (>= 0.14.0)
     ast (2.4.2)
+    base64 (0.3.0)
     diff-lcs (1.5.0)
+    ostruct (0.6.3)
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
+    racc (1.8.1)
+    racc (1.8.1-java)
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.5.0)
@@ -54,11 +58,14 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal (~> 2.4.1)
+  base64
   bundler (>= 2.2.10)
+  ostruct
+  racc
   rake (>= 12.3.3)
   rspec (~> 3.5.0)
   rubocop (= 1.20.0)
   rubocop-checkstyle_formatter!
 
 BUNDLED WITH
-   2.3.22
+   2.5.22
