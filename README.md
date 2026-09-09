@@ -3,7 +3,7 @@
 A formatter for [RuboCop](https://github.com/rubocop/rubocop) that outputs in checkstyle format.
 It requires RuboCop version 1.20.0 or above.
 
-![Build Status](https://github.com/eitoball/rubocop-checkstyle_formatter/actions/workflows/build.yml/badge.svg?branch=master)
+![Build Status](https://github.com/eitoball/rubocop-checkstyle_formatter/actions/workflows/build.yml/badge.svg?branch=main)
 
 ## Installation
 
