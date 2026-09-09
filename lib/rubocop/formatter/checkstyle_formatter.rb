@@ -60,7 +60,7 @@ module RuboCop
       def offense_attributes(offense)
         {
           'line' => offense.line,
-          'column' => offense.column,
+          'column' => offense.real_column,
           'severity' => to_checkstyle_severity(offense.severity),
           'message' => offense.message,
           'source' => "#{CHECKSTYLE_SOURCE_PREFIX}#{offense.cop_name}"

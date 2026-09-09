@@ -2,6 +2,12 @@
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/BlockLength:
   Max: 42
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'spec/**/*'
 
 # Offense count: 9
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
