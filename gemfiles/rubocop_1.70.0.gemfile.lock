@@ -16,6 +16,7 @@ GEM
     base64 (0.3.0)
     diff-lcs (1.6.2)
     json (2.21.2)
+    json (2.21.2-java)
     language_server-protocol (3.17.0.6)
     ostruct (0.6.3)
     parallel (1.28.0)
@@ -24,6 +25,7 @@ GEM
       racc
     prism (1.9.0)
     racc (1.8.1)
+    racc (1.8.1-java)
     rainbow (3.1.1)
     rake (13.4.2)
     regexp_parser (2.12.0)
@@ -61,8 +63,9 @@ GEM
     unicode-emoji (4.2.0)
 
 PLATFORMS
-  ruby
+  universal-java-11
   x86_64-darwin-24
+  x86_64-linux
 
 DEPENDENCIES
   appraisal (~> 2.4.1)
