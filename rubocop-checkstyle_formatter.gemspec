@@ -19,6 +19,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
+  gem.add_dependency 'rexml'
   gem.add_dependency 'rubocop', '>= 1.14.0'
   gem.add_development_dependency 'appraisal', '~> 2.4.1'
   gem.add_development_dependency 'base64'

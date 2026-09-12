@@ -2,6 +2,7 @@ PATH
   remote: ..
   specs:
     rubocop-checkstyle_formatter (0.6.1)
+      rexml
       rubocop (>= 1.14.0)
 
 GEM
@@ -11,19 +12,23 @@ GEM
       bundler
       rake
       thor (>= 0.14.0)
-    ast (2.4.2)
+    ast (2.4.3)
     base64 (0.3.0)
-    diff-lcs (1.4.4)
+    diff-lcs (1.6.2)
+    json (2.21.2)
+    json (2.21.2-java)
     ostruct (0.6.3)
-    parallel (1.20.1)
-    parser (3.0.2.0)
+    parallel (1.28.0)
+    parser (3.3.12.0)
       ast (~> 2.4.1)
+      racc
+    prism (1.9.0)
     racc (1.8.1)
     racc (1.8.1-java)
-    rainbow (3.0.0)
-    rake (13.0.6)
-    regexp_parser (2.1.1)
-    rexml (3.2.5)
+    rainbow (3.1.1)
+    rake (13.4.2)
+    regexp_parser (2.12.0)
+    rexml (3.4.4)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -37,25 +42,27 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    rubocop (1.19.1)
+    rubocop (1.50.2)
+      json (~> 2.3)
       parallel (~> 1.10)
-      parser (>= 3.0.0.0)
+      parser (>= 3.2.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
-      rexml
-      rubocop-ast (>= 1.9.1, < 2.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.28.0, < 2.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.10.0)
-      parser (>= 3.0.1.1)
-    ruby-progressbar (1.11.0)
-    thor (1.1.0)
-    unicode-display_width (2.0.0)
+      unicode-display_width (>= 2.4.0, < 3.0)
+    rubocop-ast (1.50.0)
+      parser (>= 3.3.7.2)
+      prism (~> 1.7)
+    ruby-progressbar (1.13.0)
+    thor (1.5.0)
+    unicode-display_width (2.6.0)
 
 PLATFORMS
-  java
-  ruby
   universal-java-11
+  x86_64-darwin-24
+  x86_64-linux
 
 DEPENDENCIES
   appraisal (~> 2.4.1)
@@ -65,7 +72,7 @@ DEPENDENCIES
   racc
   rake (>= 12.3.3)
   rspec (~> 3.5.0)
-  rubocop (= 1.19.1)
+  rubocop (= 1.50.2)
   rubocop-checkstyle_formatter!
 
 BUNDLED WITH
