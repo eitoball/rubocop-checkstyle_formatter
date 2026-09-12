@@ -101,6 +101,57 @@ module RuboCop
           expect(errors_from(doc)).to be_empty
         end
       end
+
+      describe 'XML escaping of offense messages' do
+        def message_attribute(doc)
+          REXML::XPath.first(doc, '//checkstyle/file/error').attribute('message').value
+        end
+
+        it 'escapes ampersands' do
+          message = 'Use "&" instead of "and"'
+          doc = format_file([build_offense(:warning, message: message)])
+
+          expect(output.string).to include('&amp;')
+          expect(message_attribute(doc)).to eq(message)
+        end
+
+        it 'escapes angle brackets' do
+          message = 'Avoid <class> syntax'
+          doc = format_file([build_offense(:warning, message: message)])
+
+          expect(output.string).to include('&lt;class&gt;')
+          expect(message_attribute(doc)).to eq(message)
+        end
+
+        it 'escapes single and double quotes' do
+          message = %q(Check 'single' and "double" quotes)
+          doc = format_file([build_offense(:warning, message: message)])
+
+          expect(output.string).to include('&apos;single&apos;')
+          expect(output.string).to include('&quot;double&quot;')
+          expect(message_attribute(doc)).to eq(message)
+        end
+
+        it 'produces well-formed, parseable XML when a message mixes all special characters' do
+          message = %q(Use "&" instead of "and", avoid <class> syntax, check 'single' quotes)
+
+          doc = nil
+          expect { doc = format_file([build_offense(:warning, message: message)]) }.not_to raise_error
+
+          expect(message_attribute(doc)).to eq(message)
+        end
+      end
+
+      describe 'known limitations of XML escaping' do
+        it 'cannot encode raw control characters, which are illegal in XML 1.0' do
+          message = "unterminated string\x01literal"
+          offense = build_offense(:warning, message: message)
+
+          # REXML raises a bare RuntimeError with this wording as an implementation
+          # detail (not a documented API), so we only match on the message here.
+          expect { format_file([offense]) }.to raise_error(/Illegal character/)
+        end
+      end
     end
   end
 end
