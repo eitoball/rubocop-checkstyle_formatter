@@ -30,6 +30,13 @@ As a part of build, I execute rubocop as shell script like:
 
 Then, after build, I add post-build action 'Publish Checkstyle analysis results' and configure Checkstyle results to "tmp/checkstyle.xml".
 
+## Known limitations
+
+Offense messages are written into the `message` attribute via REXML, which escapes
+`&`, `<`, `>`, `'`, and `"` automatically, so these characters are safe to include in
+cop messages. Raw control characters (e.g. `\x01`), however, are illegal in XML 1.0
+and will cause REXML to raise an error while writing the report.
+
 ## Contributing
 
 1. Fork it
