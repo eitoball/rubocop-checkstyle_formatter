@@ -94,11 +94,36 @@ module RuboCop
       end
 
       describe 'empty offenses' do
-        it 'outputs a file element without errors' do
+        around do |example|
+          original = ENV.delete('RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT')
+          example.run
+        ensure
+          if original
+            ENV['RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT'] = original
+          else
+            ENV.delete('RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT')
+          end
+        end
+
+        it 'outputs a file element without errors by default' do
           doc = format_file([])
 
           expect(REXML::XPath.first(doc, '//checkstyle/file')).not_to be_nil
           expect(errors_from(doc)).to be_empty
+        end
+
+        %w[false FALSE].each do |value|
+          it "omits the file element when output-empty-result is #{value}" do
+            ENV['RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT'] = value
+
+            expect(REXML::XPath.first(format_file([]), '//checkstyle/file')).to be_nil
+          end
+        end
+
+        it 'outputs a file element for a value other than false' do
+          ENV['RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT'] = 'true'
+
+          expect(REXML::XPath.first(format_file([]), '//checkstyle/file')).not_to be_nil
         end
       end
 

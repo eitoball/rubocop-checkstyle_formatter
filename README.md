@@ -23,6 +23,10 @@ Or install it yourself as:
 
     $ rubocop --require rubocop/formatter/checkstyle_formatter --format RuboCop::Formatter::CheckstyleFormatter
 
+Set `RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT=false` to omit `<file>`
+elements for files without offenses. The value is case-insensitive; by default,
+and for all other values, those empty elements are included.
+
 I use this formatter in Jenkins with [Checkstyle plugin](https://wiki.jenkins-ci.org/display/JENKINS/Checkstyle+Plugin).
 As a part of build, I execute rubocop as shell script like:
 

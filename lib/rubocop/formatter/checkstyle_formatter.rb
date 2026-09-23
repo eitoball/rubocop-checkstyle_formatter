@@ -29,7 +29,7 @@ module RuboCop
       end
 
       def file_finished(file, offenses)
-        return if offenses.empty?
+        return if omit_empty_file?(offenses)
 
         file_element = REXML::Element.new('file', @checkstyle)
         file_element.attributes['name'] = file_path(file)
@@ -50,6 +50,11 @@ module RuboCop
 
       def absolute_path?
         ENV.key?('RUBOCOP_CHECKSTYLE_FORMATTER_ABSOLUTE_PATH')
+      end
+
+      def omit_empty_file?(offenses)
+        offenses.empty? &&
+          ENV['RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT'].to_s.casecmp?('false')
       end
 
       def add_offenses(parent, offenses)
