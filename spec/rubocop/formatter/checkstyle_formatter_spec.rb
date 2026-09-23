@@ -7,9 +7,9 @@ require 'rexml/document'
 module RuboCop
   module Formatter
     RSpec.describe CheckstyleFormatter do
-      let(:output) { StringIO.new }
+      let(:output_io) { StringIO.new }
       let(:file) { File.expand_path('sample.rb', Dir.pwd) }
-      let(:formatter) { described_class.new(output) }
+      let(:formatter) { described_class.new(output_io) }
 
       def build_offense(severity, line: 1, column: 0, message: nil)
         source = (Array.new(line - 1, 'x') + ['x' * (column + 1)]).join("\n")
@@ -24,7 +24,7 @@ module RuboCop
         formatter.started(file)
         formatter.file_finished(file, offenses)
         formatter.finished([file])
-        REXML::Document.new(output.string)
+        REXML::Document.new(output_io.string)
       end
 
       def errors_from(doc)
@@ -94,6 +94,10 @@ module RuboCop
       end
 
       describe 'empty offenses' do
+        let(:empty_file_output_warning) do
+          'RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT will default to false in a future version.'
+        end
+
         around do |example|
           original = ENV.delete('RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT')
           example.run
@@ -105,8 +109,11 @@ module RuboCop
           end
         end
 
-        it 'outputs a file element without errors by default' do
-          doc = format_file([])
+        it 'outputs a file element without errors and warns about the future default' do
+          doc = nil
+
+          expect { doc = format_file([]) }
+            .to output("#{empty_file_output_warning}\n").to_stderr
 
           expect(REXML::XPath.first(doc, '//checkstyle/file')).not_to be_nil
           expect(errors_from(doc)).to be_empty
@@ -120,10 +127,36 @@ module RuboCop
           end
         end
 
+        it 'does not warn when output-empty-result is false' do
+          ENV['RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT'] = 'false'
+
+          expect { format_file([]) }.not_to output.to_stderr
+        end
+
         it 'outputs a file element for a value other than false' do
           ENV['RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT'] = 'true'
 
-          expect(REXML::XPath.first(format_file([]), '//checkstyle/file')).not_to be_nil
+          expect { expect(REXML::XPath.first(format_file([]), '//checkstyle/file')).not_to be_nil }
+            .to output("#{empty_file_output_warning}\n").to_stderr
+        end
+
+        it 'warns once per formatter run when several files have no offenses' do
+          formatter.started(file)
+
+          expect do
+            formatter.file_finished(file, [])
+            formatter.file_finished(file, [])
+            formatter.finished([file])
+          end.to output("#{empty_file_output_warning}\n").to_stderr
+        end
+
+        it 'warns again after a new formatter run starts' do
+          2.times do
+            formatter.started(file)
+
+            expect { formatter.file_finished(file, []) }
+              .to output("#{empty_file_output_warning}\n").to_stderr
+          end
         end
       end
 
@@ -136,7 +169,7 @@ module RuboCop
           message = 'Use "&" instead of "and"'
           doc = format_file([build_offense(:warning, message: message)])
 
-          expect(output.string).to include('&amp;')
+          expect(output_io.string).to include('&amp;')
           expect(message_attribute(doc)).to eq(message)
         end
 
@@ -144,7 +177,7 @@ module RuboCop
           message = 'Avoid <class> syntax'
           doc = format_file([build_offense(:warning, message: message)])
 
-          expect(output.string).to include('&lt;class&gt;')
+          expect(output_io.string).to include('&lt;class&gt;')
           expect(message_attribute(doc)).to eq(message)
         end
 
@@ -152,8 +185,8 @@ module RuboCop
           message = %q(Check 'single' and "double" quotes)
           doc = format_file([build_offense(:warning, message: message)])
 
-          expect(output.string).to include('&apos;single&apos;')
-          expect(output.string).to include('&quot;double&quot;')
+          expect(output_io.string).to include('&apos;single&apos;')
+          expect(output_io.string).to include('&quot;double&quot;')
           expect(message_attribute(doc)).to eq(message)
         end
 
