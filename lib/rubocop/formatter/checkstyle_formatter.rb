@@ -26,9 +26,14 @@ module RuboCop
         @document = REXML::Document.new
         @document << REXML::XMLDecl.new
         @checkstyle = REXML::Element.new('checkstyle', @document)
+        @empty_file_output_warning_emitted = false
       end
 
       def file_finished(file, offenses)
+        return if omit_empty_file?(offenses)
+
+        warn_about_empty_file_output if offenses.empty?
+
         file_element = REXML::Element.new('file', @checkstyle)
         file_element.attributes['name'] = file_path(file)
         add_offenses(file_element, offenses)
@@ -48,6 +53,18 @@ module RuboCop
 
       def absolute_path?
         ENV.key?('RUBOCOP_CHECKSTYLE_FORMATTER_ABSOLUTE_PATH')
+      end
+
+      def omit_empty_file?(offenses)
+        offenses.empty? &&
+          ENV['RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT'].to_s.casecmp?('false')
+      end
+
+      def warn_about_empty_file_output
+        return if @empty_file_output_warning_emitted
+
+        warn 'RUBOCOP_CHECKSTYLE_FORMATTER_OUTPUT_EMPTY_RESULT will default to false in a future version.'
+        @empty_file_output_warning_emitted = true
       end
 
       def add_offenses(parent, offenses)
